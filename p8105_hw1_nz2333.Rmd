@@ -13,7 +13,7 @@ Problem 1
 Creating data file
 
 ```{r problem1-1}
-prone_df=
+prbone_df=
   tibble(
     random_sample = rnorm(10),
     random_sample_logic = random_sample > 0,
@@ -29,11 +29,19 @@ prone_df=
 Get the mean value
 
 ```{r problem1-2}
-mean(pull(prone_df, var = random_sample))
-mean(pull(prone_df, var = random_sample_logic))
-mean(pull(prone_df, var = character))
-mean(pull(prone_df, var = factor_level))
+mean(pull(prbone_df, var = random_sample))
+mean(pull(prbone_df, var = random_sample_logic))
+mean(pull(prbone_df, var = character))
+mean(pull(prbone_df, var = factor_level))
 ```
 
+*Based on the results, we can get mean values for the first two variables: random_sample and random_sample_logic. But we were unable to get the mean value for character and factor_level because they are not in numeric or logical format. 
 
+Convert to numeric
+
+```{r problem1-3, results = "hide"}
+as.numeric(pull(prbone_df, random_sample_logic))
+as.numeric(pull(prbone_df, character))
+as.numeric(pull(prbone_df, factor_level))
+```
 
