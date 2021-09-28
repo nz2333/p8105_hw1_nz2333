@@ -10,7 +10,8 @@ library(tidyverse)
 ```
 
 Problem 1
-Creating data file
+
+_Creating data file_
 
 ```{r problem1-1}
 prbone_df=
@@ -26,7 +27,7 @@ prbone_df=
   )
 ```
 
-Get the mean value
+_Get the mean value_
 
 ```{r problem1-2}
 mean(pull(prbone_df, var = random_sample))
@@ -35,13 +36,32 @@ mean(pull(prbone_df, var = character))
 mean(pull(prbone_df, var = factor_level))
 ```
 
-*Based on the results, we can get mean values for the first two variables: random_sample and random_sample_logic. But we were unable to get the mean value for character and factor_level because they are not in numeric or logical format. 
+/Based on the results, we can get mean values for the first two variables: random_sample and random_sample_logic. But we were unable to get the mean value for character and factor_level because they are not in numeric or logical format./ 
 
-Convert to numeric
+_Convert to numeric_
 
 ```{r problem1-3, results = "hide"}
 as.numeric(pull(prbone_df, random_sample_logic))
 as.numeric(pull(prbone_df, character))
 as.numeric(pull(prbone_df, factor_level))
 ```
+
+/random_sample_logic and factor_level were successfully converted to numeric forms coded with numbers. But the character variable converted to NA's, because it was not able to convert from character words to numeric numbers. /
+
+/This explains why the mean calculation failed for character variables, becuase they were not being converted to numeric and thus unable to calculate mean value for character variables./
+
+Problem 2
+
+_load dataset_
+
+```{r}
+data("penguins", package = "palmerpenguins")
+```
+
+/The dataset "penguins" has 8 variables: species, island, bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, sex, and year. Variables bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, and year are numeric variables. 
+
+It has `r nrow(penguins)` rows and `r ncol(penguins)` columns. 
+
+The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm=T)`./
+
 
