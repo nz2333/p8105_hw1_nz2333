@@ -1,28 +1,39 @@
 ---
 title: "p8105_hw1_nz2333"
-output: html_document
+author: nz2333
+date: 9/28/2021
+output: github_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r}
+library(tidyverse)
 ```
 
-## R Markdown
+Problem 1
+Creating data file
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r problem1-1}
+prone_df=
+  tibble(
+    random_sample = rnorm(10),
+    random_sample_logic = random_sample > 0,
+    character = c("Red", "Orange", "Yellow", "Pink",
+                  "Green", "Blue", "White",
+                  "Brown", "Grey", "Black"),
+    factor_level = factor(c("Light", "Light", "Light", "Light", 
+                           "Neutral", "Neutral", "Neutral", 
+                           "Dark", "Dark", "Dark"))
+  )
 ```
 
-## Including Plots
+Get the mean value
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r problem1-2}
+mean(pull(prone_df, var = random_sample))
+mean(pull(prone_df, var = random_sample_logic))
+mean(pull(prone_df, var = character))
+mean(pull(prone_df, var = factor_level))
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
