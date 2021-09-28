@@ -54,7 +54,7 @@ Problem 2
 
 _load dataset_
 
-```{r}
+```{r load data}
 data("penguins", package = "palmerpenguins")
 ```
 
@@ -63,5 +63,13 @@ data("penguins", package = "palmerpenguins")
 It has `r nrow(penguins)` rows and `r ncol(penguins)` columns. 
 
 The mean flipper length is `r mean(pull(penguins, flipper_length_mm), na.rm=T)`./
+
+_Scatter plot_
+```{r scatterlot}
+ggplot(data = penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species )) + geom_point()
+
+ggsave("Prob2_Scatterplot.png")
+```
+
 
 
